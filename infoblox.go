@@ -4,7 +4,6 @@ package infoblox
 import (
 	"crypto/tls"
 	"fmt"
-	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -43,7 +42,7 @@ func NewClient(host, username, password string, sslVerify bool) *Client {
 		InsecureSkipVerify: !sslVerify,
 	}
 	if tlsconfig.InsecureSkipVerify {
-		log.Printf("WARNING: SSL cert verification  disabled\n")
+		fmt.Println("WARNING: SSL cert verification  disabled!")
 	}
 	transport = &http.Transport{
 		TLSClientConfig: tlsconfig,
